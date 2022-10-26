@@ -18,6 +18,7 @@ import { AuthContext } from '../../../context';
 import { CheckError } from "../../../utils/ErrorHandling";
 import { LOGIN_GOOGLE_USER, LOGIN_USER } from '../../../graphql/mutation';
 import { useForm } from '../../../utils/hooks';
+import '../../../css/main.css';
 const { Content } = Layout;
 
 export default (props) => {
@@ -80,6 +81,7 @@ export default (props) => {
           alignItems: 'center',
           justifyContent: 'center',
           flexDirection: 'column',
+
         }}
       >
         <Card
@@ -87,6 +89,10 @@ export default (props) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            borderRadius: '28px',
+            boxShadow: '4px 4px 9px 4px rgb(0 0 0 / 20%)',
+            background: 'antiquewhite',
+            top: '18px'  
           }}
         >
           <Form
@@ -124,18 +130,49 @@ export default (props) => {
             </Form.Item>
 
             <Form.Item>
-              <Button
-                type='primary'
-                htmlType='submit'
-                loading={loading}
-                disabled={pressedGoogleLogin || loginGoogleUserStatus.loading}
-              >
-                Submit
-              </Button>
+              <div style={{
+                display: 'flex',
+                justifyContent: 'space-around',
+              }}>
+                <Button
+                  style={{ width: '125px', height: '38px' }}
+                  className='btn view_more_btn'
+                  type='primary'
+                  htmlType='submit'
+                  loading={loading}
+                  disabled={pressedGoogleLogin || loginGoogleUserStatus.loading}
+                >
+                  Submit
+                </Button>
+
+                <Space>
+                  <GoogleLogin
+                    clientId={GOOGLE_CLIENT_ID}
+                    buttonText='Continue With Google'
+                    onSuccess={handleGoogleResponse}
+                    onFailure={(error) => {
+                      setPressedGoogleLogin(false);
+                      console.error(error);
+                    }}
+                    cookiePolicy={'single_host_origin'}
+                    onRequest={() => setPressedGoogleLogin(true)}
+                    disabled={pressedGoogleLogin}
+                  />
+                </Space>
+                {loginGoogleUserStatus.loading && (
+                  <Space>
+                    <Divider />
+                    Redirecting, please wait...
+                    <LoadingOutlined />
+                  </Space>
+                )}
+
+              </div>
+
             </Form.Item>
           </Form>
         </Card>
-        <Divider />
+        {/* <Divider />
         <Space>
           <GoogleLogin
             clientId={GOOGLE_CLIENT_ID}
@@ -153,12 +190,12 @@ export default (props) => {
         {loginGoogleUserStatus.loading && (
           <Space>
             <Divider />
-              Redirecting, please wait...
+            Redirecting, please wait...
             <LoadingOutlined />
           </Space>
-        )}
+        )} */}
       </Content>
       <Footer />
-    </Layout>
+    </Layout >
   );
 };

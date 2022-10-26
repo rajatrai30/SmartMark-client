@@ -1,6 +1,9 @@
 import {
   HomeOutlined,
   PictureOutlined,
+  LinkOutlined,
+  ContactsOutlined,
+  ProjectOutlined
 } from '@ant-design/icons';
 import { useQuery } from '@apollo/react-hooks';
 import { Menu } from 'antd';
@@ -26,7 +29,16 @@ export default () => {
       <Menu.Item key={'facegallery'} icon={<PictureOutlined />}>
         <Link to={'/facegallery'}>Face Gallery</Link>
       </Menu.Item>
-      {!collapsed && <FpsView width={190} height={100} top={525} />}
+      <Menu.Item key={'phcet'} icon={<LinkOutlined />}>
+        <a href='https://phcet.ac.in/' target="_blank">PHCET</a>
+      </Menu.Item>
+      <Menu.Item key={'portal'} icon={<ProjectOutlined />}>
+        <a href='https://phcetstudentportal.mes.ac.in/' target="_blank">Student Portal</a>
+      </Menu.Item>
+      {/* {!collapsed && <FpsView width={190} height={100} top={525} />} */}
+      <Menu.Item key={'contact'} icon={<ContactsOutlined />}>
+        <a href='https://github.com/rajatrai30/SmartMark' target="_blank">Support</a>
+      </Menu.Item>
     </Menu>
   );
 };
