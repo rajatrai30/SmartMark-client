@@ -309,10 +309,10 @@ export default (props) => {
           )}
 
           <Space direction="vertical" className="width100">
-            <h1>
+            {/* <h1>
               Total {user.userLevel == 0 ? "Enrolled" : "Created"} Course:
               {totalCoursesQuery.data?.getCoursesCount || 0}
-            </h1>
+            </h1> */}
             <Button
               style={{ float: "right" }}
               icon={<RedoOutlined />}
