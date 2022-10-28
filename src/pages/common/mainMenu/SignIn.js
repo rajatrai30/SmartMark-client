@@ -174,7 +174,7 @@ export default (props) => {
             </Form.Item>
           </Form>
         </Card>
-        <Divider />
+        {/* <Divider />
         <Space>
           <GoogleLogin
             clientId={GOOGLE_CLIENT_ID}
@@ -196,7 +196,7 @@ export default (props) => {
             Redirecting, please wait...
             <LoadingOutlined />
           </Space>
-        )}
+        )} */}
       </Content>
       <Footer />
     </Layout>
