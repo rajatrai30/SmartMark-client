@@ -14,6 +14,7 @@ import GoogleLogin from 'react-google-login';
 import HeaderNavbar from '../../../components/common/mainMenu/HeaderNavbar';
 import Footer from '../../../components/common/sharedLayout/Footer';
 import { GOOGLE_CLIENT_ID } from "../../../config";
+import { plugin_name } from "../../../config";
 import { AuthContext } from '../../../context';
 import { CheckError } from "../../../utils/ErrorHandling";
 import { LOGIN_GOOGLE_USER, LOGIN_USER } from '../../../graphql/mutation';
@@ -61,6 +62,7 @@ export default (props) => {
   const handleGoogleResponse = (res) => {
     setPressedGoogleLogin(false);
     loginGoogleUser({
+      prompt: 'consent',
       variables: {
         googleID: res.profileObj.googleId,
         googleEmail: res.profileObj.email,
@@ -68,6 +70,7 @@ export default (props) => {
         googleLastName: res.profileObj.familyName,
         googleProfilePicture: res.profileObj.imageUrl,
       },
+
     });
   };
 
@@ -145,7 +148,7 @@ export default (props) => {
                   Submit
                 </Button>
 
-                <Space>
+                {/* <Space>
                   <GoogleLogin
                     clientId={GOOGLE_CLIENT_ID}
                     buttonText='Continue With Google'
@@ -165,17 +168,17 @@ export default (props) => {
                     Redirecting, please wait...
                     <LoadingOutlined />
                   </Space>
-                )}
+                )} */}
 
               </div>
-
             </Form.Item>
           </Form>
         </Card>
-        {/* <Divider />
+        <Divider />
         <Space>
           <GoogleLogin
             clientId={GOOGLE_CLIENT_ID}
+            plugin_name={plugin_name}
             buttonText='Continue With Google'
             onSuccess={handleGoogleResponse}
             onFailure={(error) => {
@@ -193,9 +196,9 @@ export default (props) => {
             Redirecting, please wait...
             <LoadingOutlined />
           </Space>
-        )} */}
+        )}
       </Content>
       <Footer />
-    </Layout >
+    </Layout>
   );
 };

@@ -236,7 +236,7 @@ export default (props) => {
                   className='btn view_more_btn' type='primary' htmlType='submit' loading={loading} disabled={pressedGoogleLogin || loginGoogleUserStatus.loading}>
                   Submit
                 </Button>
-                <Space>
+                {/* <Space>
                   <GoogleLogin
                     clientId={GOOGLE_CLIENT_ID}
                     buttonText='Continue With Google'
@@ -258,7 +258,7 @@ export default (props) => {
                     Redirecting, please wait...
                     <LoadingOutlined />
                   </Space>
-                )}
+                )} */}
               </div>
             </Form.Item>
           </Form>
