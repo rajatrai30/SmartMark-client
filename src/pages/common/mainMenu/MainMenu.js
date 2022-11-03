@@ -34,7 +34,7 @@ export default () => {
               <Link to='/signup' style={{color: "white"}}>Get Started...</Link><i class="ri-arrow-right-line"></i>
               </button>
 
-              <button class="btn documentation_btn"><Link to='/userguidelines'> User Guidelines</Link></button>
+              <button class="btn documentation_btn"><Link to='/about'>About Us</Link></button>
             </div>
           </div>
           <div class="grid-item-2">

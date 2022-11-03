@@ -11,6 +11,7 @@ import UndefinedCardIDAndRole from './undefinedCardIDAndRole';
 import PrivacyPolicy from './privacyPolicy/PrivacyPolicy';
 import TermCondition from './termCondition/TermCondition';
 import UserGuidelines from './userGuidelines/UserGuidelines';
+import About from './About/About';
 
 export {
   CourseDetails,
@@ -27,5 +28,6 @@ export {
   UndefinedCardIDAndRole,
   PrivacyPolicy,
   TermCondition,
-  UserGuidelines
+  UserGuidelines,
+  About
 };

@@ -27,6 +27,7 @@ import {
   PrivacyPolicy,
   TermCondition,
   UserGuidelines,
+  About
 } from "./pages/common";
 import {
   AttendanceForm,
@@ -120,6 +121,11 @@ function App() {
                           exact
                           path="/termandcondition"
                           component={TermCondition}
+                        />
+                        <Route
+                          exact
+                          path="/about"
+                          component={About}
                         />
                         <Route
                           exact

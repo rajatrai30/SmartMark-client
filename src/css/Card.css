@@ -1,0 +1,59 @@
+.cardview{
+    width: 260px;
+    height: auto;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    /*border-radius: 15px;
+    transition: .2s;
+    box-shadow: 2px 1px 18px -11px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 2px 1px 18px -11px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 1px 18px -11px rgba(0,0,0,0.75);*/
+}
+.role{
+    font-family: 'Raleway', sans-serif !important;
+    font-weight: normal !important;
+}
+.cardview{
+    box-shadow: 2px 1px 18px -8px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 2px 1px 18px -8px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 1px 18px -8px rgba(0,0,0,0.75);
+}
+
+.cardview:hover{
+    box-shadow: 2px 1px 18px -8px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 2px 1px 18px -8px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 1px 18px -8px rgba(0,0,0,0.75);
+}
+.cardview  .profile{
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+    margin-bottom: 30px;
+    background-position: center;
+    background-size: cover;
+}
+.linkedin{
+    color:rgb(0, 119, 181);
+}
+.cardview h4{
+    font-family: 'Raleway', sans-serif;;
+}
+.cardview small{
+    text-align: center;
+}
+.socialprofile{
+    margin: 5px;
+}
+.twitter{
+    color:rgb(29, 161, 242);
+}
+.cardview p {
+    margin-top: 10px;
+}
+
+.social{
+    font-size: 20px;
+    margin: 7px;
+}
