@@ -4,9 +4,9 @@ import CardView from '../../../components/about/Cards/CardTeam'
 
 // team members import
 import member1 from '../../../assets/images/team-members/member1.jpg'
-import member2 from '../../../assets/images/team-members/member2.png'
-import member3 from '../../../assets/images/team-members/member3.png'
-import member4 from '../../../assets/images/team-members/member4.png'
+import member2 from '../../../assets/images/team-members/member2.jpg'
+import member3 from '../../../assets/images/team-members/member3.jpg'
+import member4 from '../../../assets/images/team-members/member4.jpg'
 
 
 
