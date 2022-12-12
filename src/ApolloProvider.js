@@ -10,7 +10,7 @@ const httpLink = createHttpLink({
   uri:
     !process.env.NODE_ENV || process.env.NODE_ENV === "development"
       ? "http://localhost:4000/"
-      : "https://facesmartmark.herokuapp.com",
+      : "https://facesmartmark.vercel.app/",
 });
 
 const authLink = setContext(() => {
