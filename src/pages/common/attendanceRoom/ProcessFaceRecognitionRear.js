@@ -158,12 +158,12 @@ export default (props) => {
             <Card>
                 <Form>
                     <Form.Item label="Webcam">
-                        <Select
+                        {/* <Select
                             defaultValue="Select Webcam"
                             style={{ width: 500 }}
                             onChange={handleSelectWebcam}
                         >
-                            {/* {inputDevices?.inputDevice?.map((device) => (
+                            {inputDevices?.inputDevice?.map((device) => (
                                 <Option key={device.deviceId} value={device.deviceId}>
                                     {device.label}
                                 </Option>
@@ -174,7 +174,7 @@ export default (props) => {
                                     <Option key={device.deviceId} value={device.deviceId}>
                                         {device.label}
                                     </Option>
-                                ))} */}
+                                ))}
                             {inputDevices && inputDevices.inputDevice ?
                                 inputDevices.inputDevice
                                     .filter(device => device.label.includes("Rear") || device.label.includes("Back"))
@@ -184,6 +184,17 @@ export default (props) => {
                                         </Option>
                                     )) : null}
 
+                        </Select> */}
+                        <Select
+                            defaultValue="Select Webcam"
+                            style={{ width: 500 }}
+                            onChange={handleSelectWebcam}
+                        >
+                            {inputDevices?.inputDevice?.map((device) => (
+                                <Option key={device.deviceId} value={device.deviceId}>
+                                    {device.label}
+                                </Option>
+                            ))}
                         </Select>
                     </Form.Item>
                     <Form.Item label="Webcam Size">
