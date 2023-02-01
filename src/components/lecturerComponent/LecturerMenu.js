@@ -24,6 +24,9 @@ export default () => {
       <Menu.Item key={'dashboard'} icon={<HomeOutlined />}>
         <Link to={'/dashboard'}>Courses</Link>
       </Menu.Item>
+      <Menu.Item key={'test'} icon={<HomeOutlined />}>
+      <Link to={'/defaulterList'}>Get Defaulter List</Link>
+      </Menu.Item>
       <Menu.Item key={'phcet'} icon={<LinkOutlined />}>
         <a href='https://phcet.ac.in/'  target="_blank">PHCET</a>
       </Menu.Item>

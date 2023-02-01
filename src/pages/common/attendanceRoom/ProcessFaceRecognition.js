@@ -26,6 +26,7 @@ const { Content } = Layout;
 const { Option } = Select;
 
 export default (props) => {
+
   const { participants, faceMatcher, facePhotos } = props;
 
   const { threshold } = useContext(FaceThresholdDistanceContext);
@@ -36,6 +37,17 @@ export default (props) => {
   const [selectedWebcam, setSelectedWebcam] = useState();
 
   const [inputDevices, setInputDevices] = useState([]);
+  useEffect(() => {
+    async function getInputDevices() {
+      const devices = await navigator.mediaDevices.enumerateDevices();
+      setInputDevices(devices.filter(device => device.kind === 'videoinput'));
+    }
+    getInputDevices();
+  }, []);
+  // const frontCams = inputDevices.filter(device => device.facingMode === 'user');
+  const frontCams = Object.values(inputDevices).filter(device => device.facingMode === 'user');
+
+
   const [camWidth, setCamWidth] = useState(DEFAULT_WEBCAM_RESOLUTION.width);
   const [camHeight, setCamHeight] = useState(DEFAULT_WEBCAM_RESOLUTION.height);
 
@@ -45,7 +57,7 @@ export default (props) => {
   const [fullDesc, setFullDesc] = useState(null);
   const [waitText, setWaitText] = useState("");
 
-  const [ createTrxCallback ] = useMutation(
+  const [createTrxCallback] = useMutation(
     CREATE_TRX_MUTATION,
     {
       update(_, { data }) {
@@ -157,7 +169,7 @@ export default (props) => {
     <Content>
       <Card>
         <Form>
-          <Form.Item label="Webcam">
+          {/* <Form.Item label="Webcam">
             <Select
               defaultValue="Select Webcam"
               style={{ width: 500 }}
@@ -169,7 +181,18 @@ export default (props) => {
                 </Option>
               ))}
             </Select>
-          </Form.Item>
+            <Select
+              defaultValue="Select Webcam"
+              style={{ width: 500 }}
+              onChange={handleSelectWebcam}
+            >
+              {frontCams.map((device) => (
+                <Option key={device.deviceId} value={device.deviceId}>
+                  {device.label}
+                </Option>
+              ))}
+            </Select>
+          </Form.Item> */}
           <Form.Item label="Webcam Size">
             <Select
               defaultValue={DEFAULT_WEBCAM_RESOLUTION.label}

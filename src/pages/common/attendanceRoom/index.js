@@ -22,6 +22,7 @@ import {
 import { CheckError } from "../../../utils/ErrorHandling";
 import { LoadingSpin } from "../../../utils/LoadingSpin";
 import ProcessFaceRecognition from "./ProcessFaceRecognition";
+import ProcessFaceRecognitionRear from "./ProcessFaceRecognitionRear";
 import TrxDashboard from "./TrxDashboard";
 
 const { Option } = Select;
@@ -251,7 +252,7 @@ export default (props) => {
           {/* For F2F, use Lecturer PC For FR */}
           {attendanceGQLQuery.data &&
             isOn &&
-            mode == "F2F" &&
+            mode == "F2F Front" &&
             user.userLevel == 1 && (
               <ProcessFaceRecognition
                 {...props}
@@ -260,8 +261,21 @@ export default (props) => {
                 participants={participants}
               />
             )}
-          {/* For Remote, use Student PC For FR */}
 
+          {/* For F2FPic, use Lecturer PC For FR */}
+          {attendanceGQLQuery.data &&
+            isOn &&
+            mode == "F2F Rear" &&
+            user.userLevel == 1 && (
+              <ProcessFaceRecognitionRear
+                {...props}
+                faceMatcher={faceMatcher}
+                facePhotos={facePhotos}
+                participants={participants}
+              />
+            )}
+
+          {/* For Remote, use Student PC For FR */}
           {attendanceGQLQuery.data &&
             isOn &&
             mode == "Remote" &&

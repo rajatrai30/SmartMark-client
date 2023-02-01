@@ -27,7 +27,11 @@ import {
   PrivacyPolicy,
   TermCondition,
   UserGuidelines,
-  About
+  About,
+  defaultList,
+  defaulterDetails,
+  defaulterListTable,
+  defaulterListTableInner
 } from "./pages/common";
 import {
   AttendanceForm,
@@ -88,6 +92,22 @@ function App() {
                           path="/course/:id"
                           component={CourseDetails}
                         />
+                        <AuthRoute
+                          exact
+                          path="/defaultlist/:id"
+                          component={defaulterDetails}
+                        />
+                        <AuthRoute
+                          exact
+                          path="/course/:id/defaultListTable"
+                          component={defaulterListTable}
+                        />
+                        <AuthRoute
+                          exact
+                          path="/course/:courseID/defaultListTable/:attendanceID"
+                          component={defaulterListTableInner}
+                        />
+
                         {/* <AuthRoute exact path='/testing' component={Testing} /> */}
                         <LecturerRoute
                           exact
@@ -136,6 +156,11 @@ function App() {
                           exact
                           path="/userguidelines"
                           component={UserGuidelines}
+                        />
+                        <Route
+                          exact
+                          path="/defaulterList"
+                          component={defaultList}
                         />
                         <AuthRoute component={NoFound} />
                       </Switch>

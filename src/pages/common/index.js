@@ -12,6 +12,10 @@ import PrivacyPolicy from './privacyPolicy/PrivacyPolicy';
 import TermCondition from './termCondition/TermCondition';
 import UserGuidelines from './userGuidelines/UserGuidelines';
 import About from './About/About';
+import defaultList from './defaulterList/defaultList';
+import defaulterDetails from './defaulterList/defaulterDetails';
+import defaulterListTable from './defaulterList/defaulterListTable';
+import defaulterListTableInner from './defaulterList/defaulterListTableInner';
 
 export {
   CourseDetails,
@@ -29,5 +33,9 @@ export {
   PrivacyPolicy,
   TermCondition,
   UserGuidelines,
-  About
+  About,
+  defaultList,
+  defaulterDetails,
+  defaulterListTable,
+  defaulterListTableInner
 };
