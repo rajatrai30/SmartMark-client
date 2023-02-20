@@ -1,0 +1,14 @@
+.signInClass {
+    /* background-image: url(https://bccompsci.club/_next/static/media/join.66de69ac578eace138ae38c72d877bac.jpg); */
+    background-image: url(https://e0.pxfuel.com/wallpapers/86/806/desktop-wallpaper-e-spin-network-security-services-overview-home-security.jpg);
+    background-position: 50%;
+    background-size: cover;
+    min-height: 112vh !important;
+}
+
+@media screen and (min-width: 640px) {
+    .signInCard {
+      width: 30rem;
+      height: 23rem;
+    }
+  }

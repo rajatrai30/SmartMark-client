@@ -26,6 +26,9 @@ export default () => {
       <Menu.Item key={'dashboard'} icon={<HomeOutlined />}>
         <Link to={'/dashboard'}>Courses</Link>
       </Menu.Item>
+      <Menu.Item key={'studentdashboard'} icon={<PictureOutlined />}>
+        <Link to={'/studentdashboard'}>My Dashboard</Link>
+      </Menu.Item>
       <Menu.Item key={'facegallery'} icon={<PictureOutlined />}>
         <Link to={'/facegallery'}>Face Gallery</Link>
       </Menu.Item>

@@ -31,7 +31,9 @@ import {
   defaultList,
   defaulterDetails,
   defaulterListTable,
-  defaulterListTableInner
+  defaulterListTableInner,
+  StudentDashBoard,
+  CourseDashBoardData
 } from "./pages/common";
 import {
   AttendanceForm,
@@ -46,6 +48,8 @@ import {
 } from "./routes";
 import Testing from "./Testing";
 import "lazysizes";
+import enrolledCourse from "./pages/common/studentDashBoard/enrolledCourse";
+import enrolledCourseSingleHistory from "./pages/common/studentDashBoard/enrolledCourseSingleHistory";
 
 function App() {
   return (
@@ -108,7 +112,18 @@ function App() {
                           component={defaulterListTableInner}
                         />
 
-                        {/* <AuthRoute exact path='/testing' component={Testing} /> */}
+                        {/* STUDENT DASHBAORD */}
+                        <AuthRoute
+                          exact
+                          path="/studentdashboard"
+                          component={StudentDashBoard}
+                        />
+                        <AuthRoute
+                          exact
+                          path="/coursedashboard"
+                          component={CourseDashBoardData}
+                        />
+
                         <LecturerRoute
                           exact
                           path="/course/:id/attendanceForm"
@@ -128,8 +143,20 @@ function App() {
 
                         <AuthRoute
                           exact
+                          path="/course/:id/enrolledCourse"
+                          component={enrolledCourse}
+                        />
+
+                        <AuthRoute
+                          exact
                           path="/course/:courseID/attendanceList/:attendanceID"
                           component={SingleAttendanceHistory}
+                        />
+
+                        <AuthRoute
+                          exact
+                          path="/course/:courseID/enrolledCourse/:attendanceID"
+                          component={enrolledCourseSingleHistory}
                         />
 
                         <StudentRoute

@@ -162,44 +162,6 @@ export default (props) => {
     }
   }, [attendees, absentees, participants]);
 
-  const parseParticipantData = (participants, absentees) => {
-    let parsedData = [];
-    console.log(absentees)
-    participants.map((participant, index) => {
-      const tmp = {
-        key: participant._id,
-        avatar: (
-          <Avatar
-            src={participant.profilePictureURL}
-            style={{
-              backgroundColor: `rgb(${Math.random() * 150 + 30}, ${
-                Math.random() * 150 + 30
-              }, ${Math.random() * 150 + 30})`,
-            }}
-          >
-            {/* Set the avatar to participant's first name */}
-            {participant.firstName[0]}
-          </Avatar>
-        ),
-        cardID: participant.cardID,
-        name: participant.firstName + " " + participant.lastName,
-
-        status: absentees.find((abs) => abs._id == participant._id)
-          ? "Absent"
-          : "Attend",
-        checkin_date: participant.attend_at
-          ? moment(participant.attend_at).format("DD/MM/YYYY")
-          : "-",
-        checkin_time: participant.attend_at
-          ? moment(participant.attend_at).format("h:mm:ss a")
-          : "-",
-      };
-      parsedData.push(tmp);
-    });
-
-    return parsedData;
-  };
-
   const parseAbsenteeData = (participants, absentees) => {
     let parsedData = [];
     participants.map((participant) => {

@@ -37,19 +37,22 @@ export default ({ isCollapseMenuOpen, setIsCollapseMenuOpen }) => {
         </Link>
       </p>
       <p>
+        <Link to={'/studentdashboard'}> <PictureOutlined />My Dashboard</Link>
+      </p>
+      <p>
         <Link to={'/facegallery'}>
           <PictureOutlined />
           &nbsp; Face Gallery
         </Link>
       </p>
       <p>
-      <a href='https://phcet.ac.in/' target="_blank"><LinkOutlined />&nbsp; PHCET</a>
+        <a href='https://phcet.ac.in/' target="_blank"><LinkOutlined />&nbsp; PHCET</a>
       </p>
       <p>
-      <a href='https://phcetstudentportal.mes.ac.in/' target="_blank"><ContactsOutlined />&nbsp; Student Portal</a>
+        <a href='https://phcetstudentportal.mes.ac.in/' target="_blank"><ContactsOutlined />&nbsp; Student Portal</a>
       </p>
       <p>
-      <a href='https://github.com/rajatrai30/SmartMark' target="_blank"><ProjectOutlined />&nbsp; Support</a>
+        <a href='https://github.com/rajatrai30/SmartMark' target="_blank"><ProjectOutlined />&nbsp; Support</a>
       </p>
     </Drawer>
   );

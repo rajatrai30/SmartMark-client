@@ -31,6 +31,18 @@ export const FETCH_PARTICIPANTS_QUERY = gql`
   }
 `;
 
+export const DISPLAY_PARTICIPANTS_QUERY = gql`
+  query getParticipants {
+    getParticipants {
+      _id
+      firstName
+      lastName
+      profilePictureURL
+      cardID
+    }
+  }
+`;
+
 export const FETCH_COURSES_QUERY = gql`
   query getCourses($currPage: Int!, $pageSize: Int!) {
     getCourses(currPage: $currPage, pageSize: $pageSize) {

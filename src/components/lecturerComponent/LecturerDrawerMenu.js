@@ -35,14 +35,17 @@ export default ({ isCollapseMenuOpen, setIsCollapseMenuOpen }) => {
           &nbsp; Courses
         </Link>
       </p>
-      <p>
-      <a href='https://phcet.ac.in/' target="_blank"><LinkOutlined />&nbsp; PHCET</a>
+      <p>      <Link to={'/defaulterList'}><HomeOutlined />&nbsp;
+        Get Defaulter List</Link>
       </p>
       <p>
-      <a href='https://phcetstudentportal.mes.ac.in/' target="_blank"><ContactsOutlined />&nbsp; Student Portal</a>
+        <a href='https://phcet.ac.in/' target="_blank"><LinkOutlined />&nbsp; PHCET</a>
       </p>
       <p>
-      <a href='https://github.com/rajatrai30/SmartMark' target="_blank"><ProjectOutlined />&nbsp; Support</a>
+        <a href='https://phcetstudentportal.mes.ac.in/' target="_blank"><ContactsOutlined />&nbsp; Student Portal</a>
+      </p>
+      <p>
+        <a href='https://github.com/rajatrai30/SmartMark' target="_blank"><ProjectOutlined />&nbsp; Support</a>
       </p>
     </Drawer>
   );

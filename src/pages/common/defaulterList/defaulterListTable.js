@@ -8,6 +8,7 @@ import {
 } from "@ant-design/icons";
 import { useMutation, useQuery } from "@apollo/react-hooks";
 import {
+  Avatar,
   Button,
   Card,
   Divider,
@@ -38,7 +39,7 @@ import {
   FETCH_ATTENDANCE_LIST_COUNT_IN_COURSE_QUERY,
   FETCH_ATTENDANCE_LIST_IN_COURSE_QUERY,
 } from "../../../graphql/query";
-import { SingleAttendanceHistory } from "..";
+import singleHistory from "../attendance/singleHistory";
 
 const { Title } = Typography;
 const { Content } = Layout;
@@ -46,6 +47,9 @@ const { Content } = Layout;
 export default (props) => {
   const { user } = useContext(AuthContext);
   const [attendanceList, setAttendanceList] = useState([]);
+  const [participants, setParticipants] = useState([]);
+  const [attendees, setAttendees] = useState([]);
+  const [absentees, setAbsentees] = useState([]);
 
   const columns = [
     {
@@ -106,34 +110,16 @@ export default (props) => {
       ),
       sorter: (a, b) => a.mode.localeCompare(b.mode),
     },
-    // {
-    //   title: <strong>Open</strong>,
-    //   dataIndex: "open",
-    //   key: "open",
-    //   render: (text) => (
-    //     <Tag color={text == "On" ? "#0c8" : "#f00"}>
-    //       {text} {text == "On" ? <ClockCircleFilled /> : <StopOutlined />}
-    //     </Tag>
-    //   ),
-    //   align: "center",
-    //   sorter: (a, b) => a.open.localeCompare(b.open),
-    // },
     {
       title: <strong>{"Get Defaulter List"}</strong>,
       dataIndex: user.userLevel === 1 ? "action" : "status",
       render: (_, record) => (
         <Skeleton loading={loading} active>
-          {/* <Tooltip placement="topLeft" title="Go to Room">
-            <Button
-              onClick={() => handleAccessRoom(record)}
-              style={{ margin: "10px" }}
-              icon={<RightCircleFilled />}
-            ></Button>
-          </Tooltip> */}
 
           <Tooltip placement="topLeft" title="History Record">
             <Button
               onClick={() => handleAccessHistory(record)}
+              // onClick={handleAccessHistory}
               style={{ margin: "10px" }}
               icon={<ProfileOutlined />}
             ></Button>
@@ -162,6 +148,85 @@ export default (props) => {
       align: "center",
     },
   ];
+
+  const columns2 = [
+    {
+      title: <strong>Avatar</strong>,
+      dataIndex: "avatar",
+      key: "avatar",
+      align: "center",
+      width: "5%",
+    },
+    {
+      key: "cardID",
+      title: <strong>Matric Number</strong>,
+      dataIndex: "cardID",
+      align: "center",
+      sorter: (a, b) => a.cardID.localeCompare(b.cardID),
+    },
+    {
+      key: "name",
+      title: <strong>Name</strong>,
+      dataIndex: "name",
+      align: "center",
+      sorter: (a, b) => a.name.localeCompare(b.name),
+    },
+    {
+      title: <strong>Defaulter Status</strong>,
+      dataIndex: "status",
+      render: (_, record) => (
+        <Tag color={record.status === "Defaulter" ? "volcano" : "green"}>
+          {record.status}
+        </Tag>
+      ),
+      align: "center",
+      sorter: (a, b) => a.status.localeCompare(b.status),
+    },
+  ];
+
+  // const courseAndParticipantsGQLQuery = useQuery(
+  //   FETCH_PARTICIPANTS_QUERY,
+  //   {
+  //     onError(err) {
+  //       props.history.push(`/dashboard`);
+
+  //       CheckError(err);
+  //     },
+  //     variables: {
+  //       id: props.match.params.courseID,
+  //     },
+  //     notifyOnNetworkStatusChange: true,
+  //   }
+  // );
+
+  const parseAbsenteeData = (participants, absentees) => {
+    let parsedData = [];
+    participants.map((participant) => {
+      if (absentees.find((abs) => abs._id == participant._id)) {
+        const tmp = {
+          key: participant._id,
+          avatar: (
+            <Avatar
+              src={participant.profilePictureURL}
+              style={{
+                backgroundColor: `rgb(${Math.random() * 150 + 30}, ${Math.random() * 150 + 30
+                  }, ${Math.random() * 150 + 30})`,
+              }}
+            >
+              {participant.firstName[0]}
+            </Avatar>
+          ),
+          cardID: participant.cardID,
+          name: participant.firstName + " " + participant.lastName,
+          status: "Defaulter",
+        };
+        parsedData.push(tmp);
+      }
+    });
+    return parsedData;
+  };
+
+
 
   //modal visible boolean
   const [visible, SetVisible] = useState(false);
@@ -205,8 +270,8 @@ export default (props) => {
         if (
           totalAttendanceListCountInCourse.data
             ?.getAttendanceListCountInCourse -
-            (tablePagination.current - 1) * tablePagination.pageSize <=
-            0 &&
+          (tablePagination.current - 1) * tablePagination.pageSize <=
+          0 &&
           tablePagination.current !== 1
         ) {
           setTablePagination((prevState) => {
@@ -251,7 +316,10 @@ export default (props) => {
     setAttendanceList(data?.getAttendanceListInCourse.attendanceList || []);
   }, [data]);
 
+  const [showComponent, setShowComponent] = useState(false);
+
   const handleAccessHistory = (attendance) => {
+    // setShowComponent(!showComponent);
     props.history.push(
       `/course/${props.match.params.id}/defaultListTable/${attendance.key}`
     );
@@ -333,15 +401,6 @@ export default (props) => {
                 {totalAttendanceListCountInCourse.data
                   ?.getAttendanceListCountInCourse || 0}
               </h1>
-              {/* {user.userLevel === 1 && (
-                <Button style={{ float: "right" }} type="primary">
-                  <Link
-                    to={`/course/${props.match.params.id}/attendanceForm`}
-                  >
-                    Create Attendance
-                  </Link>
-                </Button>
-              )} */}
               <Button
                 style={{ float: "right" }}
                 icon={<RedoOutlined />}
@@ -359,6 +418,15 @@ export default (props) => {
                 onChange={handleTableChange}
                 columns={columns}
               />
+              <Table
+                scroll={{ x: "max-content" }}
+                loading={loading}
+                pagination={tablePagination}
+                dataSource={parseAbsenteeData(participants, absentees)
+                } onChange={handleTableChange}
+                columns={columns2}
+              />
+
 
               {/*modal backdrop*/}
               <Modal
@@ -373,8 +441,8 @@ export default (props) => {
               />
             </Space>
           </Card>
+          {showComponent && <singleHistory />}
         </Content>
-        {/* <SingleAttendanceHistory props={props}/> */}
         <Footer />
       </Layout>
     </Layout>

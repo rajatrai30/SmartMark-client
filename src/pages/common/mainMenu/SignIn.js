@@ -20,6 +20,7 @@ import { CheckError } from "../../../utils/ErrorHandling";
 import { LOGIN_GOOGLE_USER, LOGIN_USER } from '../../../graphql/mutation';
 import { useForm } from '../../../utils/hooks';
 import '../../../css/main.css';
+import './SignIn.css';
 const { Content } = Layout;
 
 export default (props) => {
@@ -75,8 +76,9 @@ export default (props) => {
   };
 
   return (
-    <Layout className='signin layout'>
-      <HeaderNavbar />
+    
+    <Layout className='signin layout signInClass'>
+      {/* <HeaderNavbar /> */}
 
       <Content
         style={{
@@ -87,7 +89,7 @@ export default (props) => {
 
         }}
       >
-        <Card
+        <Card className='signInCard'
           style={{
             display: 'flex',
             alignItems: 'center',

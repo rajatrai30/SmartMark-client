@@ -16,6 +16,8 @@ import defaultList from './defaulterList/defaultList';
 import defaulterDetails from './defaulterList/defaulterDetails';
 import defaulterListTable from './defaulterList/defaulterListTable';
 import defaulterListTableInner from './defaulterList/defaulterListTableInner';
+import StudentDashBoard from './studentDashBoard';
+import CourseDashBoardData from './courseDashBoardData';
 
 export {
   CourseDetails,
@@ -37,5 +39,7 @@ export {
   defaultList,
   defaulterDetails,
   defaulterListTable,
-  defaulterListTableInner
+  defaulterListTableInner,
+  StudentDashBoard,
+  CourseDashBoardData
 };

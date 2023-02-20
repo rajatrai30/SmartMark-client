@@ -23,3 +23,16 @@ export const ADD_PARTICIPANT_MUTATION = gql`
     }
   }
 `;
+
+export const DISPLAY_PARTICIPANT_DATA_MUTATION = gql`
+  mutation displayParticipantData($participantID: ID!) {
+    displayParticipantData(participantID: $participantID) {
+      _id
+      firstName
+      lastName
+      cardID
+      profilePictureURL
+    }
+  }
+`;
+

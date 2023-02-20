@@ -15,6 +15,7 @@ import { LOGIN_GOOGLE_USER } from '../../../graphql/mutation';
 import GoogleLogin from 'react-google-login';
 import { GOOGLE_CLIENT_ID } from "../../../config";
 import '../../../css/main.css';
+import './SignUp.css';
 
 
 const { Content } = Layout;
@@ -76,14 +77,14 @@ export default (props) => {
   }
 
   return (
-    <Layout className='signin layout'>
-      <HeaderNavbar />
+    <Layout className='signin layout signUpClass'>
+      {/* <HeaderNavbar /> */}
       <Content style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
         <Card style={{
           display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '28px',
           boxShadow: '4px 4px 9px 4px rgb(0 0 0 / 20%)',
           background: 'antiquewhite',
-          top: '18px'
+          top: '48px'
         }}>
           <Form
             name='basic'
