@@ -4,7 +4,8 @@ import {
   PictureOutlined,
   LinkOutlined,
   ContactsOutlined,
-  ProjectOutlined
+  ProjectOutlined,
+  DashboardOutlined
 } from '@ant-design/icons';
 import { useQuery } from '@apollo/react-hooks';
 import { Drawer } from 'antd';
@@ -37,7 +38,7 @@ export default ({ isCollapseMenuOpen, setIsCollapseMenuOpen }) => {
         </Link>
       </p>
       <p>
-        <Link to={'/studentdashboard'}> <PictureOutlined />My Dashboard</Link>
+        <Link to={'/studentdashboard'}> <DashboardOutlined />My Dashboard</Link>
       </p>
       <p>
         <Link to={'/facegallery'}>

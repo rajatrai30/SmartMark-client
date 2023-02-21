@@ -3,7 +3,8 @@ import {
   PictureOutlined,
   LinkOutlined,
   ContactsOutlined,
-  ProjectOutlined
+  ProjectOutlined,
+  DashboardOutlined
 } from '@ant-design/icons';
 import { useQuery } from '@apollo/react-hooks';
 import { Menu } from 'antd';
@@ -26,7 +27,7 @@ export default () => {
       <Menu.Item key={'dashboard'} icon={<HomeOutlined />}>
         <Link to={'/dashboard'}>Courses</Link>
       </Menu.Item>
-      <Menu.Item key={'studentdashboard'} icon={<PictureOutlined />}>
+      <Menu.Item key={'studentdashboard'} icon={<DashboardOutlined />}>
         <Link to={'/studentdashboard'}>My Dashboard</Link>
       </Menu.Item>
       <Menu.Item key={'facegallery'} icon={<PictureOutlined />}>

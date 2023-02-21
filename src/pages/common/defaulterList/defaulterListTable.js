@@ -2,9 +2,6 @@ import {
   DeleteFilled,
   ProfileOutlined,
   RedoOutlined,
-  RightCircleFilled,
-  ClockCircleFilled,
-  StopOutlined,
 } from "@ant-design/icons";
 import { useMutation, useQuery } from "@apollo/react-hooks";
 import {
@@ -39,7 +36,7 @@ import {
   FETCH_ATTENDANCE_LIST_COUNT_IN_COURSE_QUERY,
   FETCH_ATTENDANCE_LIST_IN_COURSE_QUERY,
 } from "../../../graphql/query";
-import singleHistory from "../attendance/singleHistory";
+import DefaulterListTableInner from "./defaulterListTableInner";
 
 const { Title } = Typography;
 const { Content } = Layout;
@@ -149,56 +146,6 @@ export default (props) => {
     },
   ];
 
-  const columns2 = [
-    {
-      title: <strong>Avatar</strong>,
-      dataIndex: "avatar",
-      key: "avatar",
-      align: "center",
-      width: "5%",
-    },
-    {
-      key: "cardID",
-      title: <strong>Matric Number</strong>,
-      dataIndex: "cardID",
-      align: "center",
-      sorter: (a, b) => a.cardID.localeCompare(b.cardID),
-    },
-    {
-      key: "name",
-      title: <strong>Name</strong>,
-      dataIndex: "name",
-      align: "center",
-      sorter: (a, b) => a.name.localeCompare(b.name),
-    },
-    {
-      title: <strong>Defaulter Status</strong>,
-      dataIndex: "status",
-      render: (_, record) => (
-        <Tag color={record.status === "Defaulter" ? "volcano" : "green"}>
-          {record.status}
-        </Tag>
-      ),
-      align: "center",
-      sorter: (a, b) => a.status.localeCompare(b.status),
-    },
-  ];
-
-  // const courseAndParticipantsGQLQuery = useQuery(
-  //   FETCH_PARTICIPANTS_QUERY,
-  //   {
-  //     onError(err) {
-  //       props.history.push(`/dashboard`);
-
-  //       CheckError(err);
-  //     },
-  //     variables: {
-  //       id: props.match.params.courseID,
-  //     },
-  //     notifyOnNetworkStatusChange: true,
-  //   }
-  // );
-
   const parseAbsenteeData = (participants, absentees) => {
     let parsedData = [];
     participants.map((participant) => {
@@ -225,9 +172,6 @@ export default (props) => {
     });
     return parsedData;
   };
-
-
-
   //modal visible boolean
   const [visible, SetVisible] = useState(false);
 
@@ -417,14 +361,6 @@ export default (props) => {
                 dataSource={parseAttendanceData(attendanceList)}
                 onChange={handleTableChange}
                 columns={columns}
-              />
-              <Table
-                scroll={{ x: "max-content" }}
-                loading={loading}
-                pagination={tablePagination}
-                dataSource={parseAbsenteeData(participants, absentees)
-                } onChange={handleTableChange}
-                columns={columns2}
               />
 
 

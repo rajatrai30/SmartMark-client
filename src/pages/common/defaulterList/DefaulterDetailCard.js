@@ -9,7 +9,7 @@ export default ({ course, props }) => {
 
   const handleAccessHistory = (attendance) => {
     props.history.push(
-      `/course/${props.match.params.id}/defaultListTable/${attendance.key}`
+      `/course/${props.match.params.id}/defaultListTable`
     );
   };
   return (
@@ -27,12 +27,12 @@ export default ({ course, props }) => {
             <strong>Session:</strong> {course.session}
           </p>
           <br />
-          <Link to={`/course/${course.shortID}/defaultListTable`}>
+          {/* <Link to={`/course/${course.shortID}/defaultListTable`}>
             Attendance List
           <br />
-          </Link>
+          </Link> */}
           <Link to="#" onClick={() => handleAccessHistory(attendance)}>
-            Access History
+            Get Defaulter List
           </Link>
         </Card>
       </Col>

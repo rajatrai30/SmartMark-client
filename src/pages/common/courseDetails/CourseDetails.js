@@ -81,7 +81,7 @@ export default (props) => {
               kickParticipantStatus.loading
             }
           >
-            Kick
+            Remove
           </Button>
         </Space>
       ),

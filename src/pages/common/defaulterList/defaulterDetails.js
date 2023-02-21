@@ -203,7 +203,7 @@ export default (props) => {
               />
             )}
           </Card>
-          <Divider
+          {/* <Divider
             orientation="left"
             style={{ color: "#333", fontWeight: "normal" }}
           >
@@ -214,9 +214,9 @@ export default (props) => {
             columns={columns}
             dataSource={parsedParticipants(participants)}
             loading={fetchParticipantGQLQuery.loading}
-          />
+          /> */}
 
-          <Button
+          {/* <Button
             style={{ float: "right" }}
             icon={<RedoOutlined />}
             disabled={fetchParticipantGQLQuery.loading}
@@ -224,8 +224,8 @@ export default (props) => {
             onClick={() => fetchParticipantGQLQuery.refetch()}
           >
             Refresh Table
-          </Button>
-          <Modal
+          </Button> */}
+          {/* <Modal
             title="Delete Course"
             action={modalItems.participant.action.kick}
             itemType={modalItems.participant.name}
@@ -239,7 +239,7 @@ export default (props) => {
             }
             handleCancel={() => setVisible(false)}
             payload={selectedParticipant}
-          />
+          /> */}
         </Content>
         <Footer />
       </Layout>

@@ -126,7 +126,7 @@ export default (props) => {
     },
     notifyOnNetworkStatusChange: true,
   });
-  
+
   useEffect(() => {
     if (courseAndParticipantsGQLQuery.data) {
       setParticipants(
@@ -152,7 +152,7 @@ export default (props) => {
         const result = trxListInAttendanceGQLQuery.data.getTrxListInAttendance.filter(
           (attendee) => participant._id == attendee.studentID
         );
-          console.log("result", result);
+        console.log("result", result);
         if (result.length >= 1) {
           Object.assign(participant, { attend_at: result[0].createdAt });
         }
@@ -162,8 +162,8 @@ export default (props) => {
       setAbsentees(currAbsentees);
       setAttendees(currAttendees);
     }
-    return ()=>{
-      
+    return () => {
+
       setAbsentees([]);
       setAttendees([]);
     }
@@ -171,7 +171,7 @@ export default (props) => {
 
   useEffect(() => {
     setStats(`${attendees.length}/${participants.length}`);
-    return ()=>{
+    return () => {
       setStats("");
     }
   }, [attendees, absentees, participants]);
@@ -186,9 +186,8 @@ export default (props) => {
           <Avatar
             src={participant.profilePictureURL}
             style={{
-              backgroundColor: `rgb(${Math.random() * 150 + 30}, ${
-                Math.random() * 150 + 30
-              }, ${Math.random() * 150 + 30})`,
+              backgroundColor: `rgb(${Math.random() * 150 + 30}, ${Math.random() * 150 + 30
+                }, ${Math.random() * 150 + 30})`,
             }}
           >
             {/* Set the avatar to participant's first name */}
@@ -200,7 +199,7 @@ export default (props) => {
 
         status: absentees.find((abs) => abs._id == participant._id)
           ? "Absent"
-          : "Attend",
+          : "Present",
         checkin_date: participant.attend_at
           ? moment(participant.attend_at).format("DD/MM/YYYY")
           : "-",
@@ -213,6 +212,19 @@ export default (props) => {
 
     return parsedData;
   };
+
+  const Print = () => {
+    //console.log('print');  
+    let buttonComp = document.getElementById('printButton');
+    buttonComp.style.display = "none";
+    let buttonComp2 = document.getElementById('printButton2');
+    buttonComp2.style.display = "none";
+    let printContents = document.getElementById('printablediv').innerHTML;
+    let originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+  }
 
   return (
     <Layout className="layout">
@@ -237,7 +249,7 @@ export default (props) => {
           ]}
         />
         <Content>
-          <Card>
+          <Card id='printablediv'>
             <Space direction="vertical" className="width100">
               {attendanceGQLQuery.data && (
                 <Card>
@@ -280,15 +292,19 @@ export default (props) => {
               ) : (
                 <LoadingSpin loading={courseAndParticipantsGQLQuery.loading} />
               )}
-              <Button
-                style={{ float: "right" }}
-                icon={<RedoOutlined />}
-                disabled={attendanceGQLQuery.loading}
-                loading={attendanceGQLQuery.loading}
-                onClick={() => attendanceGQLQuery.refetch()}
-              >
-                Refresh Table
-              </Button>
+              <div className="flex flex-row">
+                <Button
+                  id="printButton2"
+                  style={{ float: "right" }}
+                  icon={<RedoOutlined />}
+                  disabled={attendanceGQLQuery.loading}
+                  loading={attendanceGQLQuery.loading}
+                  onClick={() => attendanceGQLQuery.refetch()}
+                >
+                  Refresh Table
+                </Button>
+                <Button type="primary" className="mx-4" id="printButton" style={{ float: "right" }} onClick={Print}>Print Report</Button>
+              </div>
               <Table
                 scroll={{ x: "max-content" }}
                 loading={courseAndParticipantsGQLQuery.loading}
@@ -303,7 +319,6 @@ export default (props) => {
             </Space>
           </Card>
         </Content>
-
         <Footer />
       </Layout>
     </Layout>

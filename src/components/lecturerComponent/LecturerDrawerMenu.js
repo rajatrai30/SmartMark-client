@@ -2,7 +2,8 @@ import {
   HomeOutlined,
   LinkOutlined,
   ContactsOutlined,
-  ProjectOutlined
+  ProjectOutlined,
+  OrderedListOutlined
 } from '@ant-design/icons';
 import { useQuery } from '@apollo/react-hooks';
 import { Drawer } from 'antd';
@@ -35,8 +36,9 @@ export default ({ isCollapseMenuOpen, setIsCollapseMenuOpen }) => {
           &nbsp; Courses
         </Link>
       </p>
-      <p>      <Link to={'/defaulterList'}><HomeOutlined />&nbsp;
-        Get Defaulter List</Link>
+      <p>
+        <Link to={'/defaulterList'}><OrderedListOutlined />&nbsp;
+          Get Defaulter List</Link>
       </p>
       <p>
         <a href='https://phcet.ac.in/' target="_blank"><LinkOutlined />&nbsp; PHCET</a>

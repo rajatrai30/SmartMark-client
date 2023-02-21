@@ -2,7 +2,8 @@ import {
   HomeOutlined,
   LinkOutlined,
   ContactsOutlined,
-  ProjectOutlined
+  ProjectOutlined,
+  OrderedListOutlined
 } from '@ant-design/icons';
 import { useQuery } from '@apollo/react-hooks';
 import { Menu } from 'antd';
@@ -24,7 +25,7 @@ export default () => {
       <Menu.Item key={'dashboard'} icon={<HomeOutlined />}>
         <Link to={'/dashboard'}>Courses</Link>
       </Menu.Item>
-      <Menu.Item key={'test'} icon={<HomeOutlined />}>
+      <Menu.Item key={'defaulterList'} icon={<OrderedListOutlined />}>
       <Link to={'/defaulterList'}>Get Defaulter List</Link>
       </Menu.Item>
       <Menu.Item key={'phcet'} icon={<LinkOutlined />}>

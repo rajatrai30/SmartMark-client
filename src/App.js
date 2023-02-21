@@ -118,6 +118,7 @@ function App() {
                           path="/studentdashboard"
                           component={StudentDashBoard}
                         />
+                        {/* STUDENT DASHBAORD */}
                         <AuthRoute
                           exact
                           path="/coursedashboard"
