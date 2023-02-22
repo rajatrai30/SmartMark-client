@@ -187,7 +187,7 @@ export default (props) => {
                         </Select> */}
                         <Select
                             defaultValue="Select Webcam"
-                            style={{ width: 500 }}
+                            // style={{ width: 500 }}
                             onChange={handleSelectWebcam}
                         >
                             {inputDevices?.inputDevice?.map((device) => (
@@ -200,7 +200,7 @@ export default (props) => {
                     <Form.Item label="Webcam Size">
                         <Select
                             defaultValue={DEFAULT_WEBCAM_RESOLUTION.label}
-                            style={{ width: 200 }}
+                            // style={{ width: 200 }}
                             onChange={handleWebcamResolution}
                         >
                             {webcamResolutionType.map((type) => (

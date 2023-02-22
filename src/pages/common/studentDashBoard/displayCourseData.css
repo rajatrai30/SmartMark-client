@@ -29,6 +29,7 @@
 
 
 .eventcard{
+    background: antiquewhite;
     cursor: pointer;
     border-radius: 15px;
     overflow: hidden;
