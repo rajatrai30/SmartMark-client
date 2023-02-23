@@ -198,7 +198,7 @@ export default (props) => {
         <Content>
           <Card
             title={
-              mode == "F2F" ? (
+              mode == "F2F Front" || mode === "F2F Rear" ? (
                 <Title level={4}>F2F Attendance</Title>
               ) : (
                 <Title level={4}>Remote Attendance</Title>

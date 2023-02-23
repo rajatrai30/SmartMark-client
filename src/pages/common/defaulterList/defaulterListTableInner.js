@@ -28,6 +28,8 @@ import HistoryViz from "../attendance/HistoryViz";
 import { LoadingSpin } from "../../../utils/LoadingSpin";
 import moment from "moment";
 import DefaulterListTable from "./defaulterListTable";
+import * as XLSX from 'xlsx';
+
 
 const { Title } = Typography;
 const { Content } = Layout;
@@ -196,12 +198,24 @@ export default (props) => {
     buttonComp.style.display = "none";
     let buttonComp2 = document.getElementById('printButton2');
     buttonComp2.style.display = "none";
+    let buttonComp3 = document.getElementById('excelButton');
+    buttonComp3.style.display = "none";
     let printContents = document.getElementById('printablediv').innerHTML;
     let originalContents = document.body.innerHTML;
     document.body.innerHTML = printContents;
     window.print();
     document.body.innerHTML = originalContents;
   }
+
+  function exportToExcel() {
+    const fileName = 'Defaulter-List.xlsx';
+    const sheet = XLSX.utils.table_to_sheet(document.getElementById('printablediv'));
+    const book = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(book, sheet, 'Defaulter List');
+
+    XLSX.writeFile(book, fileName);
+  }
+
 
   return (
     <Layout className="layout">
@@ -254,17 +268,18 @@ export default (props) => {
               )}
               <Divider />
               <div className="flex flex-row">
-              <Button
-                id="printButton2"
-                style={{ float: "right" }}
-                icon={<RedoOutlined />}
-                disabled={attendanceGQLQuery.loading}
-                loading={attendanceGQLQuery.loading}
-                onClick={() => attendanceGQLQuery.refetch()}
-              >
-                Refresh Table
-              </Button>
-              <Button type="primary" className="mx-4" id="printButton" style={{ float: "right" }} onClick={Print}>Print Report</Button>
+                <Button
+                  id="printButton2"
+                  style={{ float: "right" }}
+                  icon={<RedoOutlined />}
+                  disabled={attendanceGQLQuery.loading}
+                  loading={attendanceGQLQuery.loading}
+                  onClick={() => attendanceGQLQuery.refetch()}
+                >
+                  Refresh Table
+                </Button>
+                <Button type="primary" className="mx-2" id="excelButton" style={{ float: "right" }} onClick={exportToExcel}>Export to Excel</Button>
+                <Button type="primary" className="mx-2" id="printButton" style={{ float: "right" }} onClick={Print}>Print Report</Button>
               </div>
               <Table
                 scroll={{ x: "max-content" }}

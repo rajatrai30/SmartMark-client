@@ -113,19 +113,19 @@ export default (props) => {
 
     return (
         <>
-            <h2 className="text-left text-[1rem]">My courses</h2>
+            <h2 className="text-left text-[1rem] ml-4">My courses</h2>
             <div className="myCourseInfo">
                 {data2.map((item) => (
                     <div
                         onClick={() => handleAccess(item)}
-                        className={"eventcard mx-4"}
+                        className={"eventcard mx-4 my-2"}
                     >
-                        <div key={item._id} className="p-4 font-bold">
-                            <p>{`Course ID: ${item.shortID}`}</p>
-                            <p>{`Code: ${item.code}`}</p>
-                            <p>{`Name: ${item.name}`}</p>
-                            <p>{`Session: ${item.session}`}</p>
-                            <p>{`Faculty: ${item.owner}`}</p>
+                        <div key={item._id} className="p-4">
+                            <h6 className="text-sm pb-1">{`Course ID: ${item.shortID}`}</h6>
+                            <h6 className="text-sm pb-1">{`Code: ${item.code}`}</h6>
+                            <h6 className="text-sm pb-1">{`Name: ${item.name}`}</h6>
+                            <h6 className="text-sm pb-1">{`Session: ${item.session}`}</h6>
+                            <h6 className="text-sm pb-1">{`Faculty: ${item.owner}`}</h6>
                         </div>
                     </div>
                 ))}

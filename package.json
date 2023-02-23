@@ -32,7 +32,8 @@
     "react-to-print": "^2.14.12",
     "react-webcam": "^5.2.0",
     "recharts": "^1.8.5",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "xlsx": "^0.18.5"
   },
   "scripts": {
     "start": "react-scripts start",

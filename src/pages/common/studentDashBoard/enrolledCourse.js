@@ -41,6 +41,7 @@ import {
 import { StudentDashBoard } from "..";
 import Index2 from "./index2";
 import EnrolledCourseSingleHistory from "./enrolledCourseSingleHistory";
+import "./enrolledCourse.css";
 
 const { Title } = Typography;
 const { Content } = Layout;
@@ -317,19 +318,19 @@ export default (props) => {
                         <Index2 />
                         <Space direction="vertical" className="width100">
                             <h2 className="text-left text-[1rem]">Lecture Details of the course:{props.match.params.id}</h2>
-                            <p>Click to see status of your attendance:</p>
-                            <div className="myCourseInfo">
+                            <h6 className="text-sm pb-1">Click to see status of your attendance:</h6>
+                            <div className="myCourseInfoDetails">
                                 {data2.map((item) => (
                                     <div
                                         onClick={() => handleAccessHistory(item)}
-                                        className={"eventcard mx-4"}
+                                        className={"enrolledcard mx-4 my-2"}
                                     >
                                         <div key={item._id} className="p-4 font-bold">
-                                            <p>{`Sr. No.: ${item.bil}`}</p>
-                                            <p>{`Date: ${item.date}`}</p>
-                                            <p>{`Time: ${item.time}`}</p>
-                                            <p>{`Room: ${item.room}`}</p>
-                                            <p>{`Mode: ${item.mode}`}</p>
+                                            <h6 className="text-sm pb-1">{`Sr. No.: ${item.bil}`}</h6>
+                                            <h6 className="text-sm pb-1">{`Date: ${item.date}`}</h6>
+                                            <h6 className="text-sm pb-1">{`Time: ${item.time}`}</h6>
+                                            {/* <h6 className="text-sm pb-1">{`Room: ${item.room}`}</h6> */}
+                                            <h6 className="text-sm pb-1">{`Mode: ${item.mode}`}</h6>
                                         </div>
                                     </div>
                                 ))}
